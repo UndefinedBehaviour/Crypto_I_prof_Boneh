@@ -39,6 +39,21 @@ const sqrtCeil = v => {
   }
 })(n2);
 
+// challenge 3
+(n => {
+  const a = sqrtCeil(n); // avg of 3p and 2q + 0.5
+  const sum = a + a - 1n; // sum of 3p and 2q
+  // 3p * (sum - 3p) = n
+  // 3p = (sum +- sqrt(sum^2 - 4n))/2
+  const p3 = (sum - sqrtCeil(sum * sum - 4n * n)) / 2n
+  const q2 = sum - p3;
+  const p = p3 / 3n;
+  const q = q2 / 2n;
+  console.log(p);
+  console.log(q);
+  console.log(q * p === n3);
+})(6n * n3);
+
 const extendedEuclidean = (a, b) => {
   return b ?
     (({z, s, t}) => ({ z, s: t - a / b * s, t: s }))(extendedEuclidean(b, a % b)) :
@@ -46,6 +61,21 @@ const extendedEuclidean = (a, b) => {
 };
 
 const inverseModulo = (x, p) => (extendedEuclidean(x, p).t + p) % p;
+
+// challenge 3
+(n => {
+  const a = sqrtCeil(n); // avg of 3p and 2q + 0.5
+  const sum = a + a - 1n; // sum of 3p and 2q
+  // 3p * (sum - 3p) = n
+  // 3p = (sum + sqrt(sum^2 - 4n))/2
+  const p3 = (sum - sqrtCeil(sum * sum - 4n * n)) / 2n
+  const q2 = sum - p3;
+  const p = p3 / 3n;
+  const q = q2 / 2n;
+  console.log(p);
+  console.log(q);
+  console.log(q * p === n3);
+})(6n * n3);
 
 const elevate = (a, c, p) => {
   let mul = a;
